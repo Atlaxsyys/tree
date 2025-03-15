@@ -44,7 +44,7 @@ Node_t* search_node(Node_t* root, elem_t value)
     if (root == nullptr)  { return nullptr; }
     
     if (root->value == value) { return root; }
-    
+
     if (value < root->value)  { return search_node(root->left, value);  }
     else                      { return search_node(root->right, value); }
 
@@ -117,5 +117,28 @@ Tree_errors generate_dot(Node_t* root)
     return SUCCESS;
 }
 
+Node_t* delete_node(Node_t* root, elem_t value)
+{
+    if (!root) return nullptr;
+    
+    if (value < root->value)
+    {
+        root->left = delete_node(root->left, value);
+    }
+
+    else if (value > root->value)
+    {
+        root->right = delete_node(root->right, value);
+    }
+
+    else 
+    {
+        free_tree(&root);
+
+        return nullptr;
+    }
+    
+    return root;
+}
 
 

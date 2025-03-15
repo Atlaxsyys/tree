@@ -22,3 +22,4 @@ Node_t* search_node(Node_t* root, elem_t value);
 Tree_errors free_tree(Node_t** node);
 Tree_errors dump_tree(Node_t* root, FILE* file);
 Tree_errors generate_dot(Node_t* root);
+Node_t* delete_node(Node_t* root, elem_t value);

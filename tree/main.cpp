@@ -27,6 +27,9 @@ int main()
 
     insert_node(&root, 80);
     generate_dot(root);
+
+    delete_node(root, 70);
+    generate_dot(root);
     
     
     free_tree(&root);
