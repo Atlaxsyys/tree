@@ -1,0 +1,6 @@
+digraph BinaryTree {
+    bgcolor="#C0C0C0";
+
+    node [shape=record];
+    "0x503000000040" [shape=Mrecord, style=filled; fillcolor="purple"; label="{value: 50 | current: 0x503000000040 | { Left: (nil) | Right: (nil) } }"];
+}
