@@ -1,4 +1,4 @@
-typedef int elem_t;
+typedef const char* elem_t;
 
 typedef struct Node_t {
     elem_t value;

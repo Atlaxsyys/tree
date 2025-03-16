@@ -7,30 +7,26 @@ int main()
 {
     Node_t* root = nullptr;
     
-    insert_node(&root, 50);
+    insert_node(&root, "spokoinoi");
     generate_dot(root);
 
-    insert_node(&root, 30);
+    insert_node(&root, "nochi");
     generate_dot(root);
 
-    insert_node(&root, 70);
+    insert_node(&root, "I");
     generate_dot(root);
 
-    insert_node(&root, 20);
+    insert_node(&root, "want");
     generate_dot(root);
 
-    insert_node(&root, 40);
+    insert_node(&root, "sleep");
     generate_dot(root);
 
-    insert_node(&root, 60);
+    insert_node(&root, "goodbye");
     generate_dot(root);
 
-    insert_node(&root, 80);
+    insert_node(&root, "goodluck");
     generate_dot(root);
-
-    delete_node(root, 70);
-    generate_dot(root);
-    
     
     free_tree(&root);
     

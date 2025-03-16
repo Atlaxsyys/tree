@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "tree.h"
 
@@ -27,10 +28,11 @@ Tree_errors insert_node(Node_t** root, elem_t value)
         return create_node(root, value);
     }
 
-    if (value < (*root)->value)
+    if (strcmp(value, (*root)->value) < 0)
     {
         return insert_node(&((*root)->left), value);
     }
+
     else
     {
         return insert_node(&((*root)->right), value);
@@ -43,10 +45,10 @@ Node_t* search_node(Node_t* root, elem_t value)
 {
     if (root == nullptr)  { return nullptr; }
     
-    if (root->value == value) { return root; }
+    if (strcmp(root->value, value) == 0) { return root; }
 
-    if (value < root->value)  { return search_node(root->left, value);  }
-    else                      { return search_node(root->right, value); }
+    if (strcmp(value, root->value) < 0)  { return search_node(root->left, value);  }
+    else                                 { return search_node(root->right, value); }
 
     return nullptr;
 }
@@ -66,7 +68,7 @@ Tree_errors free_tree(Node_t** node)
 
 Tree_errors dump_tree(Node_t* root, FILE* file)
 {
-    fprintf(file, "    \"%p\" [shape=Mrecord, style=filled; fillcolor=\"purple\"; label=\"{value: %d | current: %p | { Left: %p | Right: %p } }\"];\n", root, root->value, root, root->left, root->right);
+    fprintf(file, "    \"%p\" [shape=Mrecord, style=filled; fillcolor=\"purple\"; label=\"{value: %s | current: %p | { Left: %p | Right: %p } }\"];\n", root, root->value, root, root->left, root->right);
     
     if (root->left)
     {
@@ -121,12 +123,12 @@ Node_t* delete_node(Node_t* root, elem_t value)
 {
     if (!root) return nullptr;
     
-    if (value < root->value)
+    if (strcmp(value, root->value) < 0)
     {
         root->left = delete_node(root->left, value);
     }
 
-    else if (value > root->value)
+    else if (strcmp(value, root->value) > 0)
     {
         root->right = delete_node(root->right, value);
     }
@@ -137,7 +139,7 @@ Node_t* delete_node(Node_t* root, elem_t value)
 
         return nullptr;
     }
-    
+
     return root;
 }
 
