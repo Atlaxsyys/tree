@@ -27,7 +27,7 @@ int main()
 
     insert_node(&root, "goodluck");
     generate_dot(root);
-    
+
     free_tree(&root);
     
     return 0;

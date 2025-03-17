@@ -1,3 +1,5 @@
+#pragma once
+
 typedef const char* elem_t;
 
 typedef struct Node_t {

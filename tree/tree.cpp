@@ -9,10 +9,7 @@ Tree_errors create_node(Node_t** node, elem_t value)
 {
     *node = (Node_t*) calloc(1, sizeof(Node_t));
 
-    if (*node == nullptr)
-    {
-        return MEMORY_ALLOC_ERR;
-    }
+    if (*node == nullptr)   { return MEMORY_ALLOC_ERR; }
 
     (*node)->value = value;
     (*node)->left = nullptr;
@@ -23,20 +20,10 @@ Tree_errors create_node(Node_t** node, elem_t value)
 
 Tree_errors insert_node(Node_t** root, elem_t value)
 {
-    if (*root == nullptr)
-    {
-        return create_node(root, value);
-    }
+    if (*root == nullptr)   { return create_node(root, value); }
 
-    if (strcmp(value, (*root)->value) < 0)
-    {
-        return insert_node(&((*root)->left), value);
-    }
-
-    else
-    {
-        return insert_node(&((*root)->right), value);
-    }
+    if (strcmp(value, (*root)->value) < 0) { return insert_node(&((*root)->left), value);  }
+    else                                   { return insert_node(&((*root)->right), value); }
 
     return SUCCESS;
 }
@@ -55,7 +42,7 @@ Node_t* search_node(Node_t* root, elem_t value)
 
 Tree_errors free_tree(Node_t** node)
 {
-    if (*node == nullptr) return SUCCESS;
+    if (*node == nullptr) { return SUCCESS; }
 
     free_tree(&((*node)->left));
     free_tree(&((*node)->right));
@@ -121,7 +108,7 @@ Tree_errors generate_dot(Node_t* root)
 
 Node_t* delete_node(Node_t* root, elem_t value)
 {
-    if (!root) return nullptr;
+    if (!root) { return nullptr; }
     
     if (strcmp(value, root->value) < 0)
     {
